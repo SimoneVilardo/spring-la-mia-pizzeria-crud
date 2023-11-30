@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="ISO-8859-1">
+		<!-- Bootstrap CSS -->
+ 		<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}"/>
+		<title>db-pizzeria</title>
+	</head>
+	<style>
+		.app-container{
+			width: 75vh;
+			margin-top: 100px;
+			margin-bottom: 100px;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.main-text{
+			width: 500px;
+			height: 200px;
+		}
+	</style>
+	<body>
+		<div class="container-fluid app-container border border-black">
+			<header th:replace="frags :: header"></header>
+			<main>
+				<div class="container-fluid">
+					<div class="row d-flex justify-content-center">
+						<div class="col-8 p-5">
+							<div class="row justify-content-center align-items-center">
+								<div th:if="${pizzas.isEmpty()}" class="text-center">
+									<h3>NON CI SONO PIZZE DISPONIBILI!</h3>
+								</div>
+								<div class="col-12 text-center my-3">
+									<ul class="list-group">
+								        <li th:each="pizza : ${pizzas}" class="list-group-item border border-black mx-2 px-4">
+								            <a th:href="@{/pizzas/{pizzaId} (pizzaId = ${pizza.id})}" th:text="${pizza.nome}" class="text-decoration-none text-black"></a>
+								        </li>
+								    </ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+		</div>
+		<!-- Bootstrap Bundle with Popper -->
+ 		<script th:src="@{/webjars/bootstrap/5.3.2/js/bootstrap.bundle.min.js}"></script>
+	</body>
+</html>

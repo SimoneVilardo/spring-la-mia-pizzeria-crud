@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="ISO-8859-1">
+		<!-- Bootstrap CSS -->
+ 		<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}"/>
+		<title>db-pizzeria</title>
+	</head>
+	<style>
+		.app-container{
+			width: 75vh;
+			margin-top: 100px;
+			margin-bottom: 100px;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.main-text{
+			width: 500px;
+			height: 200px;
+		}
+	</style>
+	<body>
+		<div class="container-fluid app-container border border-black">
+			<header th:replace="frags :: header"></header>
+			<main>
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12 p-5">
+							<div class="row justify-content-center align-items-center">
+								<div class="col-12 text-center my-3">
+									<h3 class="mt-5" th:text="${pizza.nome}"></h3>
+								</div>
+								<div class="col-12 text-center my-3">
+									<p th:text="${pizza.descrizione}"></p>
+								</div>
+								<div class="col-12 text-center my-3">
+									<img th:src="${pizza.url_foto}"></img>
+								</div>
+								<div class="col-12 text-center my-3">
+									<p th:text="${pizza.prezzo} + '€'"></p>
+								</div>
+								<div class="col-12 text-center mt-5">
+									<a th:replace="frags :: home"></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+		</div>
+		<!-- Bootstrap Bundle with Popper -->
+ 		<script th:src="@{/webjars/bootstrap/5.3.2/js/bootstrap.bundle.min.js}"></script>
+	</body>
+</html>
