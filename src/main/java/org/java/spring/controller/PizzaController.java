@@ -24,6 +24,7 @@ public class PizzaController {
 				: pizzaService.findByNome(q);
 		
 		model.addAttribute("pizzas", pizzas);
+		model.addAttribute("q", q == null ? "" : q);
 		
 		return "pizza_index";
 	}
