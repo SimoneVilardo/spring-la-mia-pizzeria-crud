@@ -21,34 +21,37 @@
 		}
 	</style>
 	<body>
-		<div class="container-fluid app-container border border-black">
-			<header th:replace="frags :: header"></header>
-			<main>
-				
-				<div class="container-fluid">
-					<div class="row d-flex justify-content-center">
-						<div class="col-8 p-5">
-							<h1>Tipo di Pizza:</h1>
-							<form>
-								<input id="search" type="text" name="q" th:value="${q}">
-								<input type="submit" value="CERCA" > 		
-							</form>
-							<div class="row justify-content-center align-items-center">
-								<div th:if="${pizzas.isEmpty()}" class="text-center">
-									<h3>NON CI SONO PIZZE DISPONIBILI!</h3>
-								</div>
-								<div class="col-12 text-center my-3">
-									<ul class="list-group">
-								        <li th:each="pizza : ${pizzas}" class="list-group-item border border-black mx-2 px-4">
-								            <a th:href="@{/pizzas/{pizzaId} (pizzaId = ${pizza.id})}" th:text="${pizza.nome}" class="text-decoration-none text-black"></a>
-								        </li>
-								    </ul>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</main>
+		<div class="container app-container border border-dark rounded p-4 bg-danger">
+		    <header th:replace="frags :: header"></header>
+		    <main>
+		        <div class="container">
+		            <div class="row justify-content-center">
+		                <div class="col-md-8 mt-5">
+		                    <h1 class="text-center mb-4">CERCA LA TUA PIZZA:</h1>
+		                    <form class="mb-4">
+		                        <div class="input-group">
+		                            <input id="search" type="text" name="q" th:value="${q}" class="form-control">
+		                            <button type="submit" class="btn btn-warning">CERCA</button>
+		                        </div>
+		                    </form>
+		                    <div class="text-center">
+		                        <div th:if="${pizzas.isEmpty()}">
+		                            <h3>NON CI SONO PIZZE DISPONIBILI!</h3>
+		                        </div>
+		                    </div>
+		                    <div class="row justify-content-center">
+		                        <div class="col-12 mt-3">
+		                            <ul class="list-group text-center text-uppercase">
+		                                <li th:each="pizza : ${pizzas}" class="list-group-item border border-dark mx-2 text-danger">
+		                                    <a th:href="@{/pizzas/{pizzaId} (pizzaId = ${pizza.id})}" th:text="${pizza.nome}" class="text-decoration-none text-dark"></a>
+		                                </li>
+		                            </ul>
+		                        </div>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		    </main>
 		</div>
 		<!-- Bootstrap Bundle with Popper -->
  		<script th:src="@{/webjars/bootstrap/5.3.2/js/bootstrap.bundle.min.js}"></script>

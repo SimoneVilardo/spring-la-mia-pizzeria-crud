@@ -19,6 +19,11 @@
 			width: 500px;
 			height: 200px;
 		}
+		
+		img{
+			height: 400px;
+			width: 400px;
+		}
 	</style>
 	
 	<body>
@@ -39,6 +44,7 @@
 									<img th:src="${pizza.url_foto}"></img>
 								</div>
 								<div class="col-12 text-center my-3">
+									<p>Prezzo: </p>
 									<p th:text="${pizza.prezzo} + '€'"></p>
 								</div>
 								<div class="col-12 text-center mt-5">
