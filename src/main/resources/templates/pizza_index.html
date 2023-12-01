@@ -24,9 +24,15 @@
 		<div class="container-fluid app-container border border-black">
 			<header th:replace="frags :: header"></header>
 			<main>
+				
 				<div class="container-fluid">
 					<div class="row d-flex justify-content-center">
 						<div class="col-8 p-5">
+							<h1>Tipo di Pizza:</h1>
+							<form>
+								<input id="search" type="text" name="q" th:value="${q}">
+								<input type="submit" value="CERCA" > 		
+							</form>
 							<div class="row justify-content-center align-items-center">
 								<div th:if="${pizzas.isEmpty()}" class="text-center">
 									<h3>NON CI SONO PIZZE DISPONIBILI!</h3>
