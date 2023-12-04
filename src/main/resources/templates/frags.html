@@ -14,6 +14,15 @@
 				</div>
 			</div>
 		</header>
-		<a th:fragment="home" href="/" class="btn btn-sm border border-black mx-2 px-4">Home</a>
+		<a th:fragment="home" href="/" class="btn btn-sm btn-warning border border-black mx-2 px-4">Home</a>
+		
+		<div th:fragment="errorDiv(field)" th:if="${#fields.hasErrors(field)}">
+			<ul>
+			   <li class="list-unstyled"
+			   		th:each="err : ${#fields.errors(field)}">
+			   		* [[${err}]]	
+			   	</li>
+			</ul>
+		</div>
 	</body>
 </html>

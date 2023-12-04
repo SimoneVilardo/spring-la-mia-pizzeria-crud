@@ -1,0 +1,67 @@
+<<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="ISO-8859-1">
+		<!-- Bootstrap CSS -->
+ 		<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}"/>
+		<title>db-pizzeria</title>
+	</head>
+	<style>
+		.app-container{
+			width: 75vh;
+			margin-top: 100px;
+			margin-bottom: 100px;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.main-text{
+			width: 500px;
+			height: 200px;
+		}
+	</style>
+	<body>
+		<div class="container app-container border border-dark rounded p-4 bg-danger">
+		    <header th:replace="frags :: header"></header>
+		    <main>
+		        <div class="container">
+		            <div class="row text-center">
+		                <div class="col-12">
+		                    <h1 class="text-center mb-4">CREA LA TUA PIZZA:</h1>
+		                    <form
+								th:object="${pizza}"
+								method="POST">
+								<label for="nome">Nome:</label>
+								<br>
+								<input type="text" id="nome" th:field="*{nome}">
+								<br>
+								<div th:replace="frags :: errorDiv('nome')" />
+								<label for="descrizione">Descrizione:</label>
+								<br>
+								<input type="text" id="descrizione" th:field="*{descrizione}">
+								<br>	
+								<div th:replace="frags :: errorDiv('descrizione')" />
+								<label for="url_foto">URL Foto:</label>
+								<br>
+								<input type="text" id="url_foto" th:field="*{url_foto}">
+								<br>		
+								<div th:replace="frags :: errorDiv('url_foto')" />
+								<label for="prezzo">Prezzo:</label>
+								<br>
+								<input type="number" step="0.01" id="prezzo" th:field="*{prezzo}">
+								<br>		
+								<div th:replace="frags :: errorDiv('prezzo')" />
+								<input class="btn btn-warning mt-5" type="submit" value="STORE">
+								<div class="col-12 text-center mt-5">
+									<a class="btn btn-warning" th:replace="frags :: home"></a>
+								</div>
+							</form>
+		                </div>
+		            </div>
+		        </div>
+		    </main>
+		</div>
+		<!-- Bootstrap Bundle with Popper -->
+ 		<script th:src="@{/webjars/bootstrap/5.3.2/js/bootstrap.bundle.min.js}"></script>
+	</body>
+</html>
