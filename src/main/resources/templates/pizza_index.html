@@ -44,6 +44,14 @@
 		                            <ul class="list-group text-center text-uppercase">
 		                                <li th:each="pizza : ${pizzas}" class="list-group-item border border-dark mx-2 text-danger">
 		                                    <a th:href="@{/pizzas/{pizzaId} (pizzaId = ${pizza.id})}" th:text="${pizza.nome}" class="text-decoration-none text-dark"></a>
+		                                    <a th:href="@{/pizzas/edit/{id} (id=${pizza.id})}"  class="btn btn-sm btn-warning">MODIFICA</a>
+		                                    <form 
+												style="display:inline-block"
+												th:action="@{/pizzas/delete/{id} (id=${pizza.id})}"
+												method="POST">
+											
+												<input type="submit" value="DELETE" class="btn btn-sm btn-warning">	
+											</form>
 		                                </li>
 		                            </ul>
 		                        </div>

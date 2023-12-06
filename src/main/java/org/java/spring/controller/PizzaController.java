@@ -55,18 +55,58 @@ public class PizzaController {
 	}
 	
 	@PostMapping("/pizzas/create")
-    public String storePizza(Model model, @Valid @ModelAttribute Pizza pizza, BindingResult bindingResult) {
+	public String storePizza(
+			Model model,
+			@Valid @ModelAttribute Pizza pizza, 
+			BindingResult bindingResult) {
+		
+		return savePizza(model, pizza, bindingResult);
+	}
 
-        if (bindingResult.hasErrors()) {
-
-            System.out.println(bindingResult);
-
-            model.addAttribute("pizza", pizza);
-            return "pizza-form";
-        }
-
-        pizzaService.save(pizza);
-
-        return "redirect:/";
-    }
+	@GetMapping("/pizzas/edit/{id}")
+	public String editPizza(Model model,
+			@PathVariable int id) {
+		
+		Pizza pizza = pizzaService.findById(id);
+		model.addAttribute("pizza", pizza);
+		
+		return "pizza-form";
+	}
+	@PostMapping("/pizzas/edit/{id}")
+	public String updatePizza(Model model,
+			@Valid @ModelAttribute Pizza pizza, 
+			BindingResult bindingResult) {
+		
+		return savePizza(model, pizza, bindingResult);
+	}
+	
+	@PostMapping("/pizzas/delete/{id}")
+	public String deletePizza(@PathVariable int id) {
+		
+		Pizza pizza = pizzaService.findById(id);
+		pizzaService.delete(pizza);
+		
+		System.out.println(pizza);
+		
+		return "redirect:/";
+	}
+	
+	private String savePizza(Model model,
+			@Valid @ModelAttribute Pizza pizza, 
+			BindingResult bindingResult) {
+		
+		System.out.println("Pizza:\n" + pizza);
+		System.out.println("\n---------------\n");
+		System.out.println("Error:\n" + bindingResult);
+		
+		if (bindingResult.hasErrors()) {
+			
+			model.addAttribute("pizza", pizza);
+			return "pizza-form";
+		}
+		
+		pizzaService.save(pizza);
+		
+		return "redirect:/";
+	}
 }
